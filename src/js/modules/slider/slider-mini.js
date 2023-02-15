@@ -60,23 +60,25 @@ export default class MiniSlider extends Slider {
     }
 
     init() {
-        this.container.style.cssText = `
-            display: flex;
-            flex-wrap: wrap;
-            overflow: hidden;
-            align-items: flex-start;
-        `;
-        this.bindTriggers();
-        this.decorizeSlides();
+        try {
+            this.container.style.cssText = `
+                display: flex;
+                flex-wrap: wrap;
+                overflow: hidden;
+                align-items: flex-start;
+            `;
+            this.bindTriggers();
+            this.decorizeSlides();
 
-        if (this.autoplay) {
-            this.container.addEventListener('mouseenter', () => clearInterval(this.stopSlider));
-            this.next.addEventListener('mouseenter', () => clearInterval(this.stopSlider));
-            this.prev.addEventListener('mouseenter', () => clearInterval(this.stopSlider));
-            this.container.addEventListener('mouseleave', () => this.activeSlider());
-            this.next.addEventListener('mouseleave', () => this.activeSlider());
-            this.prev.addEventListener('mouseleave', () => this.activeSlider());
-            this.activeSlider();
-        }
+            if (this.autoplay) {
+                this.container.addEventListener('mouseenter', () => clearInterval(this.stopSlider));
+                this.next.addEventListener('mouseenter', () => clearInterval(this.stopSlider));
+                this.prev.addEventListener('mouseenter', () => clearInterval(this.stopSlider));
+                this.container.addEventListener('mouseleave', () => this.activeSlider());
+                this.next.addEventListener('mouseleave', () => this.activeSlider());
+                this.prev.addEventListener('mouseleave', () => this.activeSlider());
+                this.activeSlider();
+            }
+        } catch(e){}
     }
 }
